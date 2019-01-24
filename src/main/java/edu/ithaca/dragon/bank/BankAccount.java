@@ -41,11 +41,24 @@ public class BankAccount {
      * @return      the boolean representing the validation result.
      */
     public static boolean isEmailValid(String email){
-        if (email.indexOf('@') == -1){
-            return false;
-        }
-        else {
-            return true;
-        }
+        int firstIndexOfAt = email.indexOf('@');
+        int lastIndexOfAt = email.lastIndexOf('@');
+
+        if (firstIndexOfAt == -1) return false; // check that @ was found
+        if (firstIndexOfAt != lastIndexOfAt) return false; // check that there is only 1 @
+
+        // get prefix and domain
+        String prefix = email.substring(0, firstIndexOfAt);
+        String domain = email.substring(firstIndexOfAt+1);
+
+        // validate prefix
+        if (prefix.length() == 0) return false; // check that the prefix is not empty
+
+        // validate domain
+        if (domain.indexOf('.') == -1) return false; // check that . was found in the domain
+        if (domain.indexOf('.') == 0) return false; // check that . is not the first character of the domain
+        if (domain.indexOf('.') == domain.length()) return false; // check that . is not the last character of the domain
+
+        return true;
     }
 }
