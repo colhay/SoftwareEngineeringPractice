@@ -69,6 +69,15 @@ public class BankAccount {
      * @return      the boolean representing the validation result.
      */
     public static boolean isAmountValid(double amount){
-        return false;
+        if (amount < 0) return false; // check if amount is negative
+
+        // convert amount to String and get the decimal places
+        String amountString = Double.toString(amount);
+        if (amountString.indexOf('.') != -1) {
+            int decimalPlaces = amountString.length() - amountString.indexOf('.') - 1;
+            if (decimalPlaces > 2) return false;
+        }
+
+        return true;
     }
 }
