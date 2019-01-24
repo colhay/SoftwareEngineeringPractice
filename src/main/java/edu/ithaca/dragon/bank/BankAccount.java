@@ -6,15 +6,20 @@ public class BankAccount {
     private double balance;
 
     /**
-     * @throws IllegalArgumentException if email is invalid
+     * @throws IllegalArgumentException if email or startingBalance is invalid.
      */
     public BankAccount(String email, double startingBalance){
         if (isEmailValid(email)){
             this.email = email;
-            this.balance = startingBalance;
         }
         else {
             throw new IllegalArgumentException("Email address: " + email + " is invalid, cannot create account");
+        }
+        if (isAmountValid(startingBalance)){
+            this.balance = startingBalance;
+        }
+        else {
+            throw new IllegalArgumentException("Starting Balance: " + startingBalance + " is invalid, cannot create account");
         }
     }
 
@@ -30,9 +35,20 @@ public class BankAccount {
      * Withdraws the amount from the account balance.
      * @param amount the double to withdraw.
      * @post reduces the balance by amount if amount is non-negative, non-zero, and smaller than balance
+     * @throws IllegalArgumentException if amount is invalid or greater than the balance.
      */
     public void withdraw (double amount)  {
-        if (amount > 0 && amount < getBalance()) balance -= amount;
+        if (isAmountValid(amount)){
+            if (amount < getBalance()) {
+                balance -= amount;
+            }
+            else {
+                throw new IllegalArgumentException("Amount: " + amount + " is invalid, cannot withdraw");
+            }
+        }
+        else {
+            throw new IllegalArgumentException("Amount: " + amount + " is invalid, cannot withdraw");
+        }
     }
 
     /**
