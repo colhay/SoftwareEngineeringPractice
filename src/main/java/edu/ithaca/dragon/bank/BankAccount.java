@@ -32,10 +32,8 @@ public class BankAccount {
      * @post reduces the balance by amount if amount is non-negative, non-zero, and smaller than balance
      */
     public void withdraw (double amount)  {
-        balance -= amount;
-
+        if (amount > 0 && amount < getBalance()) balance -= amount;
     }
-
 
     /**
      * Checks if email is valid.
