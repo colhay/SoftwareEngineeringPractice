@@ -27,7 +27,9 @@ public class BankAccount {
     }
 
     /**
-     * @post reduces the balance by amount if amount is non-negative and smaller than balance
+     * Withdraws the amount from the account balance.
+     * @param amount the double to withdraw.
+     * @post reduces the balance by amount if amount is non-negative, non-zero, and smaller than balance
      */
     public void withdraw (double amount)  {
         balance -= amount;
