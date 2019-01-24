@@ -39,6 +39,7 @@ public class BankAccount {
      * Checks if email is valid.
      * @param email the String to be validated.
      * @return      the boolean representing the validation result.
+     * @post        returns true if the amount is positive and has 2 decimal points or less.
      */
     public static boolean isEmailValid(String email){
         int firstIndexOfAt = email.indexOf('@');
@@ -60,5 +61,14 @@ public class BankAccount {
         if (domain.indexOf('.') == domain.length()) return false; // check that . is not the last character of the domain
 
         return true;
+    }
+
+    /**
+     * Checks if amount is valid.
+     * @param amount the double to be validated.
+     * @return      the boolean representing the validation result.
+     */
+    public static boolean isAmountValid(double amount){
+        return false;
     }
 }

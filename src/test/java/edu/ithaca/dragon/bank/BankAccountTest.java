@@ -1,6 +1,7 @@
 package edu.ithaca.dragon.bank;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestTemplate;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -37,6 +38,15 @@ class BankAccountTest {
         assertTrue(BankAccount.isEmailValid( "a.b@c.com"));
         assertFalse(BankAccount.isEmailValid( "a@.com"));
         assertFalse(BankAccount.isEmailValid( "a@b"));
+    }
+
+    @Test
+    void isAmountValidTest(){
+        assertTrue(BankAccount.isAmountValid(1));
+        assertTrue(BankAccount.isAmountValid(1.1));
+        assertTrue(BankAccount.isAmountValid(1.11));
+        assertFalse(BankAccount.isAmountValid(1.111));
+        assertFalse(BankAccount.isAmountValid(-1));
     }
 
     @Test
