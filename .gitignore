@@ -1,8 +1,7 @@
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio and WebStorm
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
 
-# I'm ignoring these things becuase I feel like I should
-.idea/vcs.xml
+# I'm ignoring this becuase it was not originally in the repo when I cloned
 target/
 
 # User-specific stuff
