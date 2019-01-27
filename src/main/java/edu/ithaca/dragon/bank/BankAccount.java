@@ -72,9 +72,11 @@ public class BankAccount {
         if (prefix.length() == 0) return false; // check that the prefix is not empty
 
         // validate domain
+        if (domain.length() == 0) return false; // check that the domain is not empty
         if (domain.indexOf('.') == -1) return false; // check that . was found in the domain
+        if (domain.lastIndexOf('.') != domain.indexOf('.')) return false; // check that there is only 1 .
         if (domain.indexOf('.') == 0) return false; // check that . is not the first character of the domain
-        if (domain.indexOf('.') == domain.length()) return false; // check that . is not the last character of the domain
+        if (domain.indexOf('.') == domain.length()-1) return false; // check that . is not the last character of the domain
 
         return true;
     }
@@ -85,7 +87,7 @@ public class BankAccount {
      * @return      the boolean representing the validation result.
      */
     public static boolean isAmountValid(double amount){
-        if (amount < 0) return false; // check if amount is negative
+        if (amount <= 0) return false; // check if amount is negative or zero
 
         // convert amount to String and get the decimal places
         String amountString = Double.toString(amount);

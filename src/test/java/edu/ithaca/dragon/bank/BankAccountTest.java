@@ -29,23 +29,23 @@ class BankAccountTest {
 
     @Test
     void isEmailValidTest(){
-        assertTrue(BankAccount.isEmailValid( "a@b.com"));
-        assertFalse( BankAccount.isEmailValid(""));
-        assertFalse(BankAccount.isEmailValid( "a@"));
-        assertFalse(BankAccount.isEmailValid( "a@b@c.com"));
-        assertFalse(BankAccount.isEmailValid( "@a.com"));
-        assertTrue(BankAccount.isEmailValid( "a.b@c.com"));
-        assertFalse(BankAccount.isEmailValid( "a@.com"));
-        assertFalse(BankAccount.isEmailValid( "a@b"));
+        assertFalse(BankAccount.isEmailValid("ab.com")); // no @ symbol
+        assertFalse(BankAccount.isEmailValid("a@@b.com")); // more than 1 @ symbol
+        assertFalse(BankAccount.isEmailValid("@b.com")); // no characters before @ symbol
+        assertFalse(BankAccount.isEmailValid("a@")); // no characters after @ symbol
+        assertFalse(BankAccount.isEmailValid("a@bcom")); // no . after @ symbol
+        assertFalse(BankAccount.isEmailValid("a@b..com")); // more than 1 . after @ symbol
+        assertFalse(BankAccount.isEmailValid("a@.com")); // . is first character after @ symbol
+        assertFalse(BankAccount.isEmailValid("a@b.")); // . is last character after @ symbol
+        assertTrue(BankAccount.isEmailValid("a@b.com")); // valid test
     }
 
     @Test
     void isAmountValidTest(){
+        assertFalse(BankAccount.isAmountValid(0));
         assertTrue(BankAccount.isAmountValid(1));
-        assertTrue(BankAccount.isAmountValid(1.1));
-        assertTrue(BankAccount.isAmountValid(1.11));
-        assertFalse(BankAccount.isAmountValid(1.111));
-        assertFalse(BankAccount.isAmountValid(-1));
+        assertTrue(BankAccount.isAmountValid(.11));
+        assertFalse(BankAccount.isAmountValid(.111));
     }
 
     @Test
